@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { ArrowLeft, Calculator, Save, X, History, Smile, Frown, TrendingUp, AlertCircle } from 'lucide-react';
 
 export default function Simulator() {
   const { studentId, courseId } = useParams();
@@ -159,7 +158,7 @@ export default function Simulator() {
       <div className="flex flex-col justify-center items-center min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 p-4">
         <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md w-full text-center">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-red-100 rounded-full mb-4">
-            <AlertCircle className="w-8 h-8 text-red-600" />
+            <span className="text-4xl">⚠️</span>
           </div>
           <h2 className="text-2xl font-bold text-gray-900 mb-2">Error</h2>
           <p className="text-gray-600 mb-6">{error}</p>
@@ -167,7 +166,7 @@ export default function Simulator() {
             onClick={() => navigate('/courses')}
             className="w-full flex items-center justify-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-blue-700 transition duration-200"
           >
-            <ArrowLeft className="w-5 h-5" />
+            <span>←</span>
             Volver a cursos
           </button>
         </div>
@@ -184,13 +183,13 @@ export default function Simulator() {
             onClick={() => navigate('/courses')}
             className="flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold mb-4 transition duration-200"
           >
-            <ArrowLeft className="w-5 h-5" />
+            <span>←</span>
             Volver a mis cursos
           </button>
           
           <div className="flex items-start gap-4">
             <div className="bg-gradient-to-br from-blue-500 to-indigo-600 p-4 rounded-xl">
-              <Calculator className="w-8 h-8 text-white" />
+              <span className="text-4xl">🧮</span>
             </div>
             <div>
               <h1 className="text-3xl font-bold text-gray-900">{curso?.nombre || 'Curso'}</h1>
@@ -202,14 +201,14 @@ export default function Simulator() {
         {/* Tabla de Evaluaciones */}
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6 border border-gray-100">
           <div className="flex items-center gap-3 mb-6">
-            <TrendingUp className="w-6 h-6 text-blue-600" />
+            <span className="text-3xl">📊</span>
             <h2 className="text-2xl font-bold text-gray-900">Evaluaciones</h2>
           </div>
           
           {evaluaciones.length === 0 ? (
             <div className="text-center py-12">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-100 rounded-full mb-4">
-                <AlertCircle className="w-8 h-8 text-gray-400" />
+                <span className="text-4xl">📝</span>
               </div>
               <p className="text-gray-500">No hay evaluaciones registradas</p>
             </div>
@@ -283,11 +282,9 @@ export default function Simulator() {
                       }`}>
                         Promedio Simulado
                       </p>
-                      {esAprobado(promedioSimulado) ? (
-                        <Smile className="w-8 h-8 text-green-600" />
-                      ) : (
-                        <Frown className="w-8 h-8 text-red-600" />
-                      )}
+                      <span className="text-4xl">
+                        {esAprobado(promedioSimulado) ? '😊' : '😔'}
+                      </span>
                     </div>
                     <p className={`text-4xl font-bold ${
                       esAprobado(promedioSimulado) ? 'text-green-700' : 'text-red-700'
@@ -305,7 +302,7 @@ export default function Simulator() {
                     onClick={handleSimular}
                     className="flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-blue-700 hover:to-indigo-700 transition duration-200 shadow-lg hover:shadow-xl"
                   >
-                    <Calculator className="w-5 h-5" />
+                    <span className="text-xl">🧮</span>
                     Calcular próximas notas
                   </button>
                 ) : (
@@ -314,14 +311,14 @@ export default function Simulator() {
                       onClick={handleGuardar}
                       className="flex items-center justify-center gap-2 bg-gradient-to-r from-green-600 to-green-700 text-white px-8 py-4 rounded-xl font-semibold hover:from-green-700 hover:to-green-800 transition duration-200 shadow-lg hover:shadow-xl"
                     >
-                      <Save className="w-5 h-5" />
+                      <span className="text-xl">💾</span>
                       Guardar Simulación
                     </button>
                     <button
                       onClick={handleCancelar}
                       className="flex items-center justify-center gap-2 bg-gray-200 text-gray-700 px-8 py-4 rounded-xl font-semibold hover:bg-gray-300 transition duration-200"
                     >
-                      <X className="w-5 h-5" />
+                      <span className="text-xl">❌</span>
                       Cancelar
                     </button>
                   </>
@@ -335,7 +332,7 @@ export default function Simulator() {
         {historial.length > 0 && (
           <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
             <div className="flex items-center gap-3 mb-6">
-              <History className="w-6 h-6 text-blue-600" />
+              <span className="text-3xl">📜</span>
               <h2 className="text-2xl font-bold text-gray-900">Historial de Simulaciones</h2>
             </div>
             <div className="space-y-4">

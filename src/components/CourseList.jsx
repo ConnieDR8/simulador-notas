@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { BookOpen, LogOut, RefreshCw, User, GraduationCap, ChevronRight, AlertCircle } from 'lucide-react';
 
 export default function CourseList() {
   const [student, setStudent] = useState(null);
@@ -86,7 +85,7 @@ export default function CourseList() {
         <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md w-full">
           <div className="text-center mb-6">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-red-100 rounded-full mb-4">
-              <AlertCircle className="w-8 h-8 text-red-600" />
+              <span className="text-4xl">⚠️</span>
             </div>
             <h2 className="text-2xl font-bold text-gray-900 mb-2">Error al cargar</h2>
             <p className="text-gray-600 bg-red-50 p-4 rounded-lg border border-red-200">
@@ -98,14 +97,14 @@ export default function CourseList() {
               onClick={fetchCourses}
               className="w-full flex items-center justify-center gap-2 bg-blue-600 text-white px-4 py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-200"
             >
-              <RefreshCw className="w-5 h-5" />
+              <span className="text-xl">🔄</span>
               Reintentar
             </button>
             <button
               onClick={handleLogout}
               className="w-full flex items-center justify-center gap-2 bg-gray-200 text-gray-700 px-4 py-3 rounded-lg font-semibold hover:bg-gray-300 transition duration-200"
             >
-              <LogOut className="w-5 h-5" />
+              <span className="text-xl">👋</span>
               Volver al login
             </button>
           </div>
@@ -122,13 +121,13 @@ export default function CourseList() {
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-4">
               <div className="bg-white/10 backdrop-blur-sm p-3 rounded-xl">
-                <GraduationCap className="w-8 h-8" />
+                <span className="text-4xl">🎓</span>
               </div>
               <div>
                 <h1 className="text-2xl sm:text-3xl font-bold">Simulador de Notas</h1>
                 {student && (
                   <div className="flex items-center gap-2 mt-1 text-blue-100">
-                    <User className="w-4 h-4" />
+                    <span>👤</span>
                     <p className="text-sm">{student.nombre} • {student.codigo}</p>
                   </div>
                 )}
@@ -138,7 +137,7 @@ export default function CourseList() {
               onClick={handleLogout}
               className="flex items-center gap-2 bg-red-500 hover:bg-red-600 px-6 py-3 rounded-xl font-semibold transition duration-200 shadow-lg hover:shadow-xl"
             >
-              <LogOut className="w-5 h-5" />
+              <span className="text-xl">🚪</span>
               <span>Cerrar Sesión</span>
             </button>
           </div>
@@ -157,7 +156,7 @@ export default function CourseList() {
           <div className="bg-white rounded-2xl shadow-lg p-8 border border-yellow-200">
             <div className="text-center">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-yellow-100 rounded-full mb-4">
-                <BookOpen className="w-8 h-8 text-yellow-600" />
+                <span className="text-4xl">📚</span>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">
                 No hay cursos disponibles
@@ -180,13 +179,13 @@ export default function CourseList() {
                 <div className="bg-gradient-to-br from-blue-500 to-indigo-600 p-6">
                   <div className="flex items-center justify-between mb-2">
                     <div className="bg-white/20 backdrop-blur-sm p-2 rounded-lg">
-                      <BookOpen className="w-6 h-6 text-white" />
+                      <span className="text-3xl">📖</span>
                     </div>
-                    <span className="text-white/80 text-sm font-medium">
+                    <span className="text-white/80 text-sm font-medium bg-white/20 px-3 py-1 rounded-full">
                       {course.codigo}
                     </span>
                   </div>
-                  <h3 className="text-xl font-bold text-white mt-4 line-clamp-2">
+                  <h3 className="text-xl font-bold text-white mt-4 line-clamp-2 min-h-[3.5rem]">
                     {course.nombre}
                   </h3>
                 </div>
@@ -197,7 +196,7 @@ export default function CourseList() {
                     className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 px-4 rounded-xl font-semibold hover:from-blue-700 hover:to-indigo-700 transition duration-200 group-hover:shadow-lg"
                   >
                     <span>Ver Notas</span>
-                    <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    <span className="group-hover:translate-x-1 transition-transform">→</span>
                   </button>
                 </div>
               </div>
